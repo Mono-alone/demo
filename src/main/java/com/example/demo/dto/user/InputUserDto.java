@@ -1,48 +1,14 @@
-package com.example.demo.entity;
-
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import java.util.UUID;
+package com.example.demo.dto.user;
 
 
-@Entity
-@Table(name="USER")
-public class User {
+public class InputUserDto {
 
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    private UUID id;
-
-    @NotBlank(message = "Username cannot be empty")
     private String username;
-
-    @NotBlank(message = "Password cannot be empty")
     private String password;
 
-    @NotBlank(message = "First name cannot be empty")
     private String firstName;
-
-    @NotBlank(message = "Last name cannot be empty")
     private String lastName;
-
     private String secondName;
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
@@ -86,9 +52,8 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", username='" + username + '\'' +
+        return "InputUserDto{" +
+                "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

@@ -31,4 +31,9 @@ public class UserServiceImpl implements UserService {
         return this.userRepository.findById(id)
                 .orElseThrow(() -> new ApplicationException("User not found", HttpStatus.NOT_FOUND));
     }
+
+    @Override
+    public User addUser(User user) {
+        return this.userRepository.save(user);
+    }
 }

@@ -10,4 +10,5 @@ public interface UserService {
 
     List<User> findAll();
     User findOne(UUID id);
+    User addUser(User user);
 }
