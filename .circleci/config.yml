@@ -1,9 +1,16 @@
 version: 2.1
 
 orbs:
-  maven: circleci/maven@1.1
+  maven: circleci/maven@1.1 # TODO: check how to get the maven version from a pom.xml file
+  heroku: circleci/heroku@1.2.6
 
 workflows:
-  maven_test:
+  test-and-deploy:
     jobs:
       - maven/test
+      - heroku/deploy-via-git:
+          requires:
+            - maven/test
+          filters:
+            branches:
+              only: main
