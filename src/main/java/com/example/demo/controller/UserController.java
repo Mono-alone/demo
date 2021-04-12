@@ -49,6 +49,11 @@ public class UserController {
         return this.userMapper.toDto(addedUser);
     }
 
+    @GetMapping("/test")
+    public String testStuff() {
+        return "U stupid.";
+    }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
