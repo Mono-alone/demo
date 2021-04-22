@@ -8,10 +8,11 @@ workflows:
   test-and-deploy:
     jobs:
       - maven/test
-      - heroku/push-docker-image:
-          pre-steps:
-            - setup_remote_docker:
-                version: 20.10.2
+#      - heroku/push-docker-image:
+#          pre-steps:
+#            - setup_remote_docker:
+#                version: 20.10.2
+      - heroku/deploy-via-git:
           requires:
             - maven/test
           filters:
