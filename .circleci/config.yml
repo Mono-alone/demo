@@ -1,17 +1,19 @@
 version: 2.1
 
 orbs:
-  maven: circleci/maven@1.1 # TODO: check how to get the maven version from a pom.xml file
+  maven: circleci/maven@1.1
   heroku: circleci/heroku@1.2.6
 
 workflows:
   test-and-deploy:
     jobs:
       - maven/test
-      - setup_remote_docker:
-          version: 19.03.13
-          docker_layer_caching: true
       - heroku/push-docker-image:
+          pre-steps:
+            run:
+              - setup_remote_docker:
+                  version: 19.03.13
+                  docker_layer_caching: true
           requires:
             - maven/test
           filters:
