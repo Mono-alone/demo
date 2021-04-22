@@ -8,6 +8,9 @@ workflows:
   test-and-deploy:
     jobs:
       - maven/test
+      - setup_remote_docker:
+          version: 19.03.13
+          docker_layer_caching: true
       - heroku/push-docker-image:
           requires:
             - maven/test
