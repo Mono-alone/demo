@@ -11,7 +11,7 @@ workflows:
       - heroku/push-docker-image:
           pre-steps:
             - setup_remote_docker:
-                version: 20.10.6
+                version: 20.10.2
           requires:
             - maven/test
           filters:
