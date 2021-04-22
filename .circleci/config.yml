@@ -8,7 +8,7 @@ workflows:
   test-and-deploy:
     jobs:
       - maven/test
-      - heroku/deploy-via-git:
+      - heroku/push-docker-image:
           requires:
             - maven/test
           filters:
